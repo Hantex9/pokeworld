@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "name": "@pokeworld/monorepo",
+  "scripts": {
+    "dev": "turbo dev",
+    "dev:pokedex": "turbo dev --filter=\"{./apps/pokedex}...\"",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "build": "turbo build",
+    "build:pokedex": "turbo build --filter=\"...{./apps/pokedex}\""
+  },
+  "devDependencies": {
+    "turbo": "^1.13.4",
+    "typescript": "^5.8.3"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  }
+}
