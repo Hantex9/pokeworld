@@ -22,7 +22,7 @@ const RootLayout = () => {
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
           <ThemeContextProvider theme={colorScheme}>
             <Stack>
-              <Stack.Screen name="index" options={{ title: 'Home', headerShown: true }} />
+              <Stack.Screen name="index" options={{ title: 'Home', headerShown: false }} />
               <Stack.Screen name="details" options={{ title: 'Details', headerShown: true }} />
               <Stack.Screen name="+not-found" />
             </Stack>

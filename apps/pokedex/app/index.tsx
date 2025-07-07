@@ -1,38 +1,31 @@
 import { useRouter } from 'expo-router';
-import { Button, View, Text } from 'react-native';
-import { useLazyLoadQuery } from 'react-relay';
-import { graphql } from 'relay-runtime';
-
-import { appPokemonListQuery } from './__generated__/appPokemonListQuery.graphql';
+import React from 'react';
+import { ActivityIndicator, FlatList } from 'react-native';
 
 import { PokemonListItem } from '@/components/PokemonListItem';
+import { usePaginatedPokemonList } from '@/hooks/usePaginatedPokemonList';
 
-const PokemonListQuery = graphql`
-  query appPokemonListQuery($limit: Int, $offset: Int) {
-    pokemons(limit: $limit, offset: $offset) {
-      results {
-        ...PokemonListItemFragment
-        name
-      }
-    }
-  }
-`;
-
-const HomeScreen = () => {
+const PokemonListScreen = () => {
   const router = useRouter();
-  const data = useLazyLoadQuery<appPokemonListQuery>(PokemonListQuery, { limit: 20, offset: 0 });
+  const { items, loadMore, loading, canLoadMore } = usePaginatedPokemonList();
 
-  console.log(data);
+  const onLoadMore = () => {
+    if (canLoadMore) {
+      loadMore();
+    }
+  };
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: 24, marginBottom: 20 }}>Home with list of all pokémon</Text>
-      <Button title="Go to details" onPress={() => router.push('/details')} />
-      {data?.pokemons?.results?.map(
-        (pokemon) => pokemon && <PokemonListItem key={pokemon.name} pokemon={pokemon} />
-      )}
-    </View>
+    <FlatList
+      data={items}
+      keyExtractor={(item) => `${item?.name}`}
+      renderItem={({ item }) => <PokemonListItem pokemon={item} />}
+      onEndReached={onLoadMore}
+      onEndReachedThreshold={0.5}
+      ListFooterComponent={loading ? <ActivityIndicator size="large" /> : undefined}
+      style={{ flex: 1 }}
+    />
   );
 };
 
-export default HomeScreen;
+export default PokemonListScreen;
