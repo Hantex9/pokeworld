@@ -4,9 +4,9 @@ import { useRelayEnvironment, fetchQuery } from 'react-relay';
 import { POKEMON_LIST_QUERY } from '@/queries/PokemonListQuery';
 import { PokemonListQuery } from '@/queries/__generated__/PokemonListQuery.graphql';
 
-const PAGE_SIZE = 25;
+export const DEFAULT_POKEMON_PAGE_SIZE = 25;
 
-type PokemonItem = NonNullable<
+export type PokemonItem = NonNullable<
   NonNullable<PokemonListQuery['response']['pokemons']>['results']
 >[number];
 
@@ -32,7 +32,7 @@ export function usePaginatedPokemonList() {
 
     try {
       const data = await fetchQuery<PokemonListQuery>(env, POKEMON_LIST_QUERY, {
-        limit: PAGE_SIZE,
+        limit: DEFAULT_POKEMON_PAGE_SIZE,
         offset,
       }).toPromise();
 
@@ -40,7 +40,7 @@ export function usePaginatedPokemonList() {
       const newTotal = data?.pokemons?.count ?? null;
 
       setItems((prev) => (Array.isArray(prev) ? [...prev, ...newItems] : [...newItems]));
-      setOffset((prev) => data?.pokemons?.nextOffset ?? prev + PAGE_SIZE);
+      setOffset((prev) => data?.pokemons?.nextOffset ?? prev + DEFAULT_POKEMON_PAGE_SIZE);
       if (total === null && newTotal !== null) {
         setTotal(newTotal);
       }
