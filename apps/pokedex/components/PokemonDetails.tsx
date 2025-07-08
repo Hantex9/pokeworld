@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Badge,
   Body,
@@ -16,7 +18,7 @@ import _ from 'lodash';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { useLazyLoadQuery } from 'react-relay';
 
-import { PokemonStats, PokemonStatsSkeleton } from './PokemonStats';
+import { PokemonStats } from './PokemonStats';
 import { Avatar } from './common/Avatar';
 
 import { POKEMON_DETAILS_QUERY } from '@/queries/PokemonDetailsQuery';
@@ -33,7 +35,6 @@ export const PokemonDetails = ({ pokemonName, pokemonImage }: PokemonDetailsProp
   const data = useLazyLoadQuery<PokemonDetailsQuery>(POKEMON_DETAILS_QUERY, {
     name: pokemonName,
   });
-
   const theme = useTheme();
 
   return (
@@ -113,7 +114,6 @@ export const PokemonDetailsSkeleton = () => (
         </View>
       </HStack>
       <VSpacer size={24} />
-      <PokemonStatsSkeleton />
     </ContentWrapper>
   </ScrollView>
 );

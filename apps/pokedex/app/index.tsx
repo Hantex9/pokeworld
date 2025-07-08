@@ -44,9 +44,11 @@ const PokemonListScreen = () => {
     []
   );
 
+  const filteredItems = useMemo(() => items.filter(Boolean), [items]);
+
   return (
     <FlatList
-      data={items}
+      data={filteredItems}
       keyExtractor={(item) => `${item?.name}`}
       ItemSeparatorComponent={() => <VSpacer />}
       renderItem={renderItem}
@@ -75,11 +77,12 @@ const EmptyListContent = (
 );
 
 const LoadingSkeletons = (
-  <>
+  <VStack space={16}>
+    <VSpacer />
     <PokemonListItem />
     <PokemonListItem />
     <PokemonListItem />
-  </>
+  </VStack>
 );
 
 const styles = StyleSheet.create({

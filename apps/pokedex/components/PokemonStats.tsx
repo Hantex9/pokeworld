@@ -3,7 +3,7 @@ import React from 'react';
 import { graphql, useFragment } from 'react-relay';
 
 import { PokemonStatsFragment$key } from './__generated__/PokemonStatsFragment.graphql';
-import { PokemonStat, PokemonStatSkeleton } from './common/PokemonStat';
+import { PokemonStat } from './common/PokemonStat';
 
 type PokemonStatsProps = {
   stats?: PokemonStatsFragment$key | undefined | null;
@@ -36,14 +36,3 @@ export const PokemonStats = ({ stats }: PokemonStatsProps) => {
     </VStack>
   );
 };
-
-export const PokemonStatsSkeleton = () => (
-  <VStack space={12} style={{ flex: 1 }}>
-    <PokemonStatSkeleton />
-    <PokemonStatSkeleton />
-    <PokemonStatSkeleton />
-    <PokemonStatSkeleton />
-    <PokemonStatSkeleton />
-    <PokemonStatSkeleton />
-  </VStack>
-);

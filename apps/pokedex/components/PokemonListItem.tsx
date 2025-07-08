@@ -27,11 +27,14 @@ export const PokemonListItemFragment = graphql`
 `;
 
 const PokemonListItemComponent = ({ pokemon, onPress }: PokemonListItemProps) => {
+  if (!pokemon) {
+    return <Skeleton shape="rectangle" radius={16} height={98} width="100%" />;
+  }
   const data = useFragment(PokemonListItemFragment, pokemon);
   const { themeType } = useCustomThemeContext();
 
   if (!data) {
-    return <Skeleton shape="rectangle" radius={16} height={98} width="100%" />;
+    return null;
   }
 
   return (
