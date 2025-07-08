@@ -1,14 +1,14 @@
 import { ThemeContextProvider } from '@pokeworld/ui';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { RelayEnvironmentProvider } from 'react-relay';
 import 'react-native-reanimated';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
 import { useLoadFonts } from '@/hooks/useLoadFonts';
 import { environment } from '@/lib/api';
+import { AppStackNavigator } from '@/navigation/AppStackNavigator';
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();
@@ -21,11 +21,7 @@ const RootLayout = () => {
       <RelayEnvironmentProvider environment={environment}>
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
           <ThemeContextProvider theme={colorScheme}>
-            <Stack>
-              <Stack.Screen name="index" options={{ title: 'Home', headerShown: false }} />
-              <Stack.Screen name="details" options={{ title: 'Details', headerShown: true }} />
-              <Stack.Screen name="+not-found" />
-            </Stack>
+            <AppStackNavigator />
             <StatusBar style="auto" />
           </ThemeContextProvider>
         </ThemeProvider>

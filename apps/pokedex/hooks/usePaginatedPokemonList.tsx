@@ -3,12 +3,9 @@ import { useRelayEnvironment, fetchQuery } from 'react-relay';
 
 import { POKEMON_LIST_QUERY } from '@/queries/PokemonListQuery';
 import { PokemonListQuery } from '@/queries/__generated__/PokemonListQuery.graphql';
+import { PokemonItem } from '@/types';
 
 export const DEFAULT_POKEMON_PAGE_SIZE = 25;
-
-export type PokemonItem = NonNullable<
-  NonNullable<PokemonListQuery['response']['pokemons']>['results']
->[number];
 
 /**
  * Custom  hook that fetches a paginated list of Pokémon using an offset/limit approach.

@@ -1,4 +1,11 @@
-import React, { createContext, PropsWithChildren, useCallback, useContext, useState } from 'react';
+import React, {
+  createContext,
+  PropsWithChildren,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { Appearance, ColorSchemeName } from 'react-native';
 
 import { Theme, ThemeDark, ThemeLight } from '../core';
@@ -32,6 +39,10 @@ export const ThemeContextProvider = ({
   const [currentTheme, setCurrentTheme] = useState<ColorSchemeName>(
     theme ?? Appearance.getColorScheme()
   );
+
+  useEffect(() => {
+    setCurrentTheme(theme);
+  }, [theme]);
 
   const handleThemeChange = useCallback((newTheme: ColorSchemeName) => {
     setCurrentTheme(newTheme);

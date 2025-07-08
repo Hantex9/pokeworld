@@ -264,7 +264,7 @@ export const ThemeLight: Theme = {
   'divider-header': 'grey-100',
   'divider-default': 'grey-200',
   'divider-bottomBar': 'grey-200',
-  'skeleton-background': 'grey-100',
+  'skeleton-background': 'grey-300',
   // Tab Item
   'tab-item-border-default': 'grey-300',
   'tab-item-foreground-default': 'black',
@@ -332,7 +332,7 @@ export const ThemeDark: Theme = {
   'divider-header': 'grey-850',
   'divider-default': 'grey-850',
   'divider-bottomBar': 'grey-850',
-  'skeleton-background': 'grey-850',
+  'skeleton-background': 'grey-700',
   // Status
   errorIcon: 'error-400',
   errorText: 'error-400',

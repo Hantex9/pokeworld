@@ -1,11 +1,21 @@
-import { View, Text } from 'react-native';
+import { useLocalSearchParams } from 'expo-router';
+import { Suspense } from 'react';
 
-const DetailsScreen = () => {
+import { PokemonDetails, PokemonDetailsSkeleton } from '@/components/PokemonDetails';
+
+type PokemonDetailsScreenParams = {
+  pokemonName: string;
+  pokemonImage?: string;
+};
+
+const PokemonDetailsScreen = () => {
+  const { pokemonName, pokemonImage } = useLocalSearchParams<PokemonDetailsScreenParams>();
+
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ fontSize: 24 }}>Details of the selected pokémon</Text>
-    </View>
+    <Suspense fallback={<PokemonDetailsSkeleton />}>
+      <PokemonDetails pokemonName={pokemonName} pokemonImage={pokemonImage} />
+    </Suspense>
   );
 };
 
-export default DetailsScreen;
+export default PokemonDetailsScreen;

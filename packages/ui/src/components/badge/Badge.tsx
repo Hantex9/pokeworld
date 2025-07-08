@@ -10,7 +10,9 @@ export type Badge = WithTestID<{
   outline?: boolean;
   text: string;
   allowFontScaling?: boolean;
-  variant: 'default' | 'warning' | 'error' | 'success' | 'cgn' | 'highlight';
+  variant?: 'default' | 'warning' | 'error' | 'success' | 'highlight';
+  color?: string;
+  textColor?: Colors;
   accessible?: boolean;
 }>;
 
@@ -50,7 +52,9 @@ export const Badge = ({
   text,
   outline = false,
   allowFontScaling = true,
-  variant,
+  variant = 'default',
+  color,
+  textColor,
   accessible = true,
   testID,
 }: Badge) => {
@@ -75,10 +79,6 @@ export const Badge = ({
       foreground: 'error-850',
       background: Colors['error-100'],
     },
-    cgn: {
-      foreground: 'hanPurple-500',
-      background: Colors['hanPurple-100'],
-    },
     highlight: {
       foreground: 'turquoise-850',
       background: Colors['turquoise-50'],
@@ -102,10 +102,6 @@ export const Badge = ({
       foreground: 'error-400',
       background: hexToRgba(Colors['error-400'], bgOpacityDarkMode),
     },
-    cgn: {
-      foreground: 'hanPurple-250',
-      background: hexToRgba(Colors['hanPurple-250'], bgOpacityDarkMode),
-    },
     highlight: {
       foreground: 'turquoise-300',
       background: hexToRgba(Colors['turquoise-300'], bgOpacityDarkMode),
@@ -125,9 +121,6 @@ export const Badge = ({
     error: {
       foreground: 'error-850',
     },
-    cgn: {
-      foreground: 'hanPurple-500',
-    },
     highlight: {
       foreground: 'turquoise-850',
     },
@@ -145,9 +138,6 @@ export const Badge = ({
     },
     error: {
       foreground: 'error-400',
-    },
-    cgn: {
-      foreground: 'hanPurple-250',
     },
     highlight: {
       foreground: 'turquoise-300',
@@ -180,7 +170,7 @@ export const Badge = ({
               borderColor: Colors[foreground],
             }
           : {
-              backgroundColor: background ?? undefined,
+              backgroundColor: color ?? background ?? undefined,
             },
       ]}
     >
@@ -188,9 +178,9 @@ export const Badge = ({
         allowFontScaling={allowFontScaling}
         font="Titillio"
         weight={'Semibold'}
-        size={12}
+        size={14}
         lineHeight={16}
-        color={foreground}
+        color={textColor ?? foreground}
         numberOfLines={1}
         ellipsizeMode="tail"
         style={{

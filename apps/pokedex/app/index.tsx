@@ -4,12 +4,14 @@ import debounce from 'lodash/debounce';
 import { useCallback, useMemo } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
-import CustomHeader from '@/components/CustomHeader';
 import { PokemonListItem } from '@/components/PokemonListItem';
+import { PokemonListItemFragment$data } from '@/components/__generated__/PokemonListItemFragment.graphql';
+import CustomHeader from '@/components/common/CustomHeader';
 import {
   DEFAULT_POKEMON_PAGE_SIZE,
   usePaginatedPokemonList,
 } from '@/hooks/usePaginatedPokemonList';
+import { PokemonItem } from '@/types';
 
 const PokemonListScreen = () => {
   const router = useRouter();
@@ -25,8 +27,20 @@ const PokemonListScreen = () => {
     [canLoadMore, loadMore]
   );
 
+  const onPressPokemon = (pokemon: PokemonListItemFragment$data) => {
+    router.push({
+      pathname: '/details',
+      params: {
+        pokemonName: pokemon.name,
+        pokemonImage: pokemon.artwork,
+      },
+    });
+  };
+
   const renderItem = useCallback(
-    ({ item }: { item: (typeof items)[number] }) => <PokemonListItem pokemon={item} />,
+    ({ item }: { item: PokemonItem }) => (
+      <PokemonListItem onPress={onPressPokemon} pokemon={item} />
+    ),
     []
   );
 

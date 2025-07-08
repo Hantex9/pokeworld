@@ -29,8 +29,8 @@ export const TagHSpacing: TagSpacing = 8;
 export const TagVSpacing: TagSpacing = 6;
 
 // Values used in the `<Badge>` component
-export type BadgeSpacing = Extract<SpacingScale, 4 | 8>;
-export const BadgeHSpacing: BadgeSpacing = 8;
+export type BadgeSpacing = Extract<SpacingScale, 4 | 8 | 12>;
+export const BadgeHSpacing: BadgeSpacing = 12;
 export const BadgeVSpacing: BadgeSpacing = 4;
 
 /*

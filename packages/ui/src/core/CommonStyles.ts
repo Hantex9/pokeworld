@@ -24,7 +24,7 @@ interface VisualCostants {
 }
 
 export const VisualCostants: VisualCostants = {
-  appMarginDefault: 24,
+  appMarginDefault: 16,
   headerHeight: 56,
   avatarSizeSmall: 44,
   avatarSizeMedium: 66,
