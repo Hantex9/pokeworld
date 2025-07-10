@@ -1,9 +1,12 @@
 import { useLocalSearchParams } from 'expo-router';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
+import { useQueryLoader } from 'react-relay';
 
 import { PokemonDetails, PokemonDetailsSkeleton } from '@/components/PokemonDetails';
 import { GenericErrorPage } from '@/components/common/GenericErrorPage';
+import { POKEMON_DETAILS_QUERY } from '@/queries/PokemonDetailsQuery';
+import { PokemonDetailsQuery } from '@/queries/__generated__/PokemonDetailsQuery.graphql';
 
 type PokemonDetailsScreenParams = {
   pokemonName: string;
@@ -12,6 +15,15 @@ type PokemonDetailsScreenParams = {
 
 const PokemonDetailsScreen = () => {
   const { pokemonName, pokemonImage } = useLocalSearchParams<PokemonDetailsScreenParams>();
+  const [queryRef, loadQuery] = useQueryLoader<PokemonDetailsQuery>(POKEMON_DETAILS_QUERY);
+
+  useEffect(() => {
+    if (pokemonName) {
+      loadQuery({ name: pokemonName }, { fetchPolicy: 'store-or-network' });
+    }
+  }, []);
+
+  if (!queryRef) return <PokemonDetailsSkeleton />;
 
   return (
     <ErrorBoundary
@@ -23,7 +35,7 @@ const PokemonDetailsScreen = () => {
       }
     >
       <Suspense fallback={<PokemonDetailsSkeleton />}>
-        <PokemonDetails pokemonName={pokemonName} pokemonImage={pokemonImage} />
+        <PokemonDetails queryRef={queryRef} pokemonImage={pokemonImage} />
       </Suspense>
     </ErrorBoundary>
   );

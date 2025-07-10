@@ -7,7 +7,11 @@ export const POKEMON_LIST_QUERY = graphql`
       nextOffset
       results {
         name
-        ...PokemonListItemFragment
+        url
+        name
+        image
+        artwork
+        dreamworld
       }
     }
   }

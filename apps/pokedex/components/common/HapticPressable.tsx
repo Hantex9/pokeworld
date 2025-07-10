@@ -7,11 +7,11 @@ export function HapticPressable(props: BottomTabBarButtonProps) {
     <PlatformPressable
       {...props}
       pressOpacity={0.8}
-      onPressIn={(ev) => {
+      onPress={(ev) => {
         if (process.env.EXPO_OS === 'ios') {
           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
         }
-        props.onPressIn?.(ev);
+        props.onPress?.(ev);
       }}
     />
   );

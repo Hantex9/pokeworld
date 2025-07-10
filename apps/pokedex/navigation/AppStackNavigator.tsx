@@ -5,7 +5,7 @@ import { CustomHeaderLeft } from '../components/common/CustomHeaderLeft';
 export const AppStackNavigator = () => (
   <Stack
     screenOptions={{
-      headerLeft: () => <CustomHeaderLeft />,
+      headerLeft: CustomHeaderLeft,
     }}
   >
     <Stack.Screen name="index" options={{ title: 'Home', headerShown: false }} />

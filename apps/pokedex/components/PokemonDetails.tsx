@@ -16,7 +16,7 @@ import {
 } from '@pokeworld/ui';
 import _ from 'lodash';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import { useLazyLoadQuery } from 'react-relay';
+import { PreloadedQuery, usePreloadedQuery } from 'react-relay';
 
 import { PokemonStats } from './PokemonStats';
 import { Avatar } from './common/Avatar';
@@ -27,14 +27,12 @@ import { PokemonTypes } from '@/types';
 import { getPokemonTypeColor, padToThreeDigits, toDecimal } from '@/utils';
 
 type PokemonDetailsProps = {
-  pokemonName: string;
+  queryRef: PreloadedQuery<PokemonDetailsQuery>;
   pokemonImage?: string;
 };
 
-export const PokemonDetails = ({ pokemonName, pokemonImage }: PokemonDetailsProps) => {
-  const data = useLazyLoadQuery<PokemonDetailsQuery>(POKEMON_DETAILS_QUERY, {
-    name: pokemonName,
-  });
+export const PokemonDetails = ({ queryRef, pokemonImage }: PokemonDetailsProps) => {
+  const data = usePreloadedQuery(POKEMON_DETAILS_QUERY, queryRef);
   const theme = useTheme();
 
   return (

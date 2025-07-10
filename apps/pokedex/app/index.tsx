@@ -5,7 +5,6 @@ import { useCallback, useMemo } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
 import { PokemonListItem } from '@/components/PokemonListItem';
-import { PokemonListItemFragment$data } from '@/components/__generated__/PokemonListItemFragment.graphql';
 import CustomHeader from '@/components/common/CustomHeader';
 import {
   DEFAULT_POKEMON_PAGE_SIZE,
@@ -27,12 +26,12 @@ const PokemonListScreen = () => {
     [canLoadMore, loadMore]
   );
 
-  const onPressPokemon = (pokemon: PokemonListItemFragment$data) => {
+  const onPressPokemon = (pokemon: PokemonItem) => {
     router.push({
       pathname: '/details',
       params: {
-        pokemonName: pokemon.name,
-        pokemonImage: pokemon.artwork,
+        pokemonName: pokemon?.name,
+        pokemonImage: pokemon?.artwork,
       },
     });
   };
