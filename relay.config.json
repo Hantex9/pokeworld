@@ -1,0 +1,13 @@
+{
+  "root": ".",
+  "sources": {
+    "apps/pokedex": "pokedex"
+  },
+  "projects": {
+    "pokedex": {
+      "language": "typescript",
+      "schema": "apps/pokedex/schema.graphql",
+      "eagerEsModules": true
+    }
+  }
+}
