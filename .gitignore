@@ -42,6 +42,7 @@ package-lock.json
 *.xccheckout
 *.xcscmblueprint
 xcuserdata
+*.app
 
 # Android Studio
 *.iml

@@ -8,13 +8,14 @@
     "lint": "eslint --ext js,ts,tsx .",
     "test": "jest",
     "build": "expo export --output-dir ./build --platform all",
+    "build:dev:ios": "eas build --profile dev-client --platform ios --local",
     "generate:schema": "get-graphql-schema https://graphql-pokeapi.graphcdn.app/ > schema.graphql",
     "relay": "relay-compiler --watch",
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "eas-build-post-install": "pnpm run -w build:pokedex-app"
+    "postinstall": "relay-compiler"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
@@ -24,6 +25,7 @@
     "expo": "~53.0.6",
     "expo-blur": "~14.1.4",
     "expo-constants": "~17.1.5",
+    "expo-dev-client": "~5.2.4",
     "expo-font": "~13.3.1",
     "expo-haptics": "~14.1.4",
     "expo-linking": "~7.1.4",

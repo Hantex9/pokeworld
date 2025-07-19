@@ -1,0 +1,13 @@
+appId: com.hantex.pokedexapp
+name: Pokemon List screen with details
+---
+- launchApp
+- tapOn: Bulbasaur
+- assertVisible:
+    id: pokemon-details-view
+- assertVisible:
+    text: Bulbasaur
+- tapOn:
+    id: back-button
+- assertVisible:
+    id: .*item.*

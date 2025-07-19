@@ -2,6 +2,7 @@ import { PropsWithChildren } from 'react';
 import { View, ViewProps, ViewStyle } from 'react-native';
 
 import { Spacer } from '../../core';
+import { WithTestID } from '../../utils/types';
 
 type AllowedStyleProps = Exclude<ViewStyle, 'display' | 'flexDirection' | 'gap'>;
 
@@ -17,9 +18,11 @@ type Stack = PropsWithChildren<{
 }> &
   A11YRelatedProps;
 
-type BaseStack = Stack & {
-  orientation: 'vertical' | 'horizontal';
-};
+type BaseStack = WithTestID<
+  Stack & {
+    orientation: 'vertical' | 'horizontal';
+  }
+>;
 
 /**
 Horizontal Stack component

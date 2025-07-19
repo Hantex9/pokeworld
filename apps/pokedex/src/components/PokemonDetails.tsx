@@ -36,7 +36,7 @@ export const PokemonDetails = ({ queryRef, pokemonImage }: PokemonDetailsProps) 
   const theme = useTheme();
 
   return (
-    <ScrollView style={{ flex: 1 }}>
+    <ScrollView testID="pokemon-details-view" style={{ flex: 1 }}>
       <ContentWrapper>
         <View>
           <VStack>

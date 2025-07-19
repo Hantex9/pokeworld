@@ -1,17 +1,9 @@
-export type ThemeSimpleValue = undefined | number | string;
-
 /**
  * Enhance the type with the testID that should be used to locate a view in end-to-end tests.
  */
 export type TestID = { testID?: string };
 
 export type WithTestID<T> = T & TestID;
-
-// A generic recursive type for the theme
-export type Theme = {
-  [key: string]: ThemeSimpleValue | Theme;
-};
-
 /**
  * Ensure that all the keys of type T are required, transforming all optional field of kind T | undefined to T
  */

@@ -1,4 +1,4 @@
-import { Colors, H1, HStack, Skeleton, useCustomThemeContext } from '@pokeworld/ui';
+import { Colors, H1, HStack, Skeleton, useCustomThemeContext, WithTestID } from '@pokeworld/ui';
 import _ from 'lodash';
 import React, { memo } from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -8,19 +8,21 @@ import { HapticPressable } from './common/HapticPressable';
 
 import { PokemonItem } from '@/types';
 
-type PokemonListItemProps = {
+type PokemonListItemProps = WithTestID<{
   pokemon?: PokemonItem;
   onPress?: (pokemon: PokemonItem) => void;
-};
+}>;
 
-const PokemonListItemComponent = ({ pokemon, onPress }: PokemonListItemProps) => {
+const PokemonListItemComponent = ({ pokemon, onPress, testID }: PokemonListItemProps) => {
   if (!pokemon) {
-    return <Skeleton shape="rectangle" radius={16} height={98} width="100%" />;
+    return (
+      <Skeleton testID="item-skeleton" shape="rectangle" radius={16} height={98} width="100%" />
+    );
   }
   const { themeType } = useCustomThemeContext();
 
   return (
-    <HapticPressable onPress={() => onPress?.(pokemon)}>
+    <HapticPressable testID={testID} onPress={() => onPress?.(pokemon)}>
       <HStack
         style={{
           backgroundColor: themeType === 'light' ? Colors['grey-450'] : Colors['grey-700'],

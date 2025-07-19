@@ -8,9 +8,7 @@
       "pnpm": "9.15.4",
       "cache": {
         "key": "turbo",
-        "paths": [
-          "../../node_modules/.cache/turbo"
-        ]
+        "paths": ["../../node_modules/.cache/turbo"]
       },
       "env": {
         "EXPO_USE_FAST_RESOLVER": "true"
@@ -28,6 +26,17 @@
       "distribution": "store",
       "android": {
         "buildType": "app-bundle"
+      }
+    },
+    "dev-client": {
+      "extends": "monorepo",
+      "developmentClient": true,
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "simulator": true
       }
     }
   }

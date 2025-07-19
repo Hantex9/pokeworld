@@ -6,6 +6,7 @@ export const POKEMON_LIST_QUERY = graphql`
       count
       nextOffset
       results {
+        progressiveId: id
         name
         url
         name

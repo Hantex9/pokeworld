@@ -6,5 +6,11 @@ export const CustomHeaderLeft = () => {
   const router = useRouter();
   const theme = useTheme();
 
-  return <HeaderBackButton tintColor={theme['textBody-default']} onPress={() => router.back()} />;
+  return (
+    <HeaderBackButton
+      testID="back-button"
+      tintColor={theme['textBody-default']}
+      onPress={() => router.back()}
+    />
+  );
 };

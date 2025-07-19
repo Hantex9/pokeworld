@@ -38,7 +38,11 @@ export const PokemonListScreen = () => {
 
   const renderItem = useCallback(
     ({ item }: { item: PokemonItem }) => (
-      <PokemonListItem onPress={onPressPokemon} pokemon={item} />
+      <PokemonListItem
+        onPress={onPressPokemon}
+        pokemon={item}
+        testID={`item-${item?.progressiveId}`}
+      />
     ),
     []
   );
