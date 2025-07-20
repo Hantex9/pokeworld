@@ -34,7 +34,9 @@ const PokemonListItemComponent = ({ pokemon, onPress, testID }: PokemonListItemP
           <Avatar source={pokemon.artwork} size={90} />
         </View>
         <View style={styles.label}>
-          <H1 color="white">{_.capitalize(pokemon.name || '')}</H1>
+          <H1 testID="pokemon-name" color="white">
+            {_.capitalize(pokemon.name || '')}
+          </H1>
         </View>
       </HStack>
     </HapticPressable>
