@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { JSX, useMemo } from 'react';
+import { useMemo } from 'react';
 import { ColorValue } from 'react-native';
 
 import { useTheme } from '../../context';
@@ -8,49 +7,6 @@ import PictogramActivate from './svg/PictogramActivate';
 import PictogramAttachment from './svg/PictogramAttachment';
 import PictogramAttention from './svg/PictogramAttention';
 import PictogramBiometric from './svg/PictogramBiometric';
-/* Bleed Pictograms */
-import PictogramBleedAccessDenied from './svg/PictogramBleedAccessDenied';
-import PictogramBleedActivate from './svg/PictogramBleedActivate';
-import PictogramBleedAttention from './svg/PictogramBleedAttention';
-import PictogramBleedCameraDenied from './svg/PictogramBleedCameraDenied';
-import PictogramBleedCameraRequest from './svg/PictogramBleedCameraRequest';
-import PictogramBleedCardAdd from './svg/PictogramBleedCardAdd';
-import PictogramBleedCardFavourite from './svg/PictogramBleedCardFavourite';
-import PictogramBleedCardIssue from './svg/PictogramBleedCardIssue';
-import PictogramBleedCardQuestion from './svg/PictogramBleedCardQuestion';
-import PictogramBleedCharity from './svg/PictogramBleedCharity';
-import PictogramBleedCie from './svg/PictogramBleedCie';
-import PictogramBleedDoc from './svg/PictogramBleedDoc';
-import PictogramBleedEmpty from './svg/PictogramBleedEmpty';
-import PictogramBleedEnded from './svg/PictogramBleedEnded';
-import PictogramBleedFatalError from './svg/PictogramBleedFatalError';
-import PictogramBleedFeature from './svg/PictogramBleedFeature';
-import PictogramBleedFeedback from './svg/PictogramBleedFeedback';
-import PictogramBleedHelp from './svg/PictogramBleedHelp';
-import PictogramBleedITWallet from './svg/PictogramBleedITWallet';
-import PictogramBleedIdea from './svg/PictogramBleedIdea';
-import PictogramBleedIdentity from './svg/PictogramBleedIdentity';
-import PictogramBleedIdentityAdd from './svg/PictogramBleedIdentityAdd';
-import PictogramBleedIdentityCheck from './svg/PictogramBleedIdentityCheck';
-import PictogramBleedIdentityRefresh from './svg/PictogramBleedIdentityRefresh';
-import PictogramBleedLostConnection from './svg/PictogramBleedLostConnection';
-import PictogramBleedMessage from './svg/PictogramBleedMessage';
-import PictogramBleedNotification from './svg/PictogramBleedNotification';
-import PictogramBleedPasscode from './svg/PictogramBleedPasscode';
-import PictogramBleedPayments from './svg/PictogramBleedPayments';
-import PictogramBleedPending from './svg/PictogramBleedPending';
-import PictogramBleedQrCode from './svg/PictogramBleedQrCode';
-import PictogramBleedReactivate from './svg/PictogramBleedReactivate';
-import PictogramBleedSavingMoney from './svg/PictogramBleedSavingMoney';
-import PictogramBleedSearch from './svg/PictogramBleedSearch';
-import PictogramBleedSecurity from './svg/PictogramBleedSecurity';
-import PictogramBleedSettings from './svg/PictogramBleedSettings';
-import PictogramBleedStar from './svg/PictogramBleedStar';
-import PictogramBleedStopSecurity from './svg/PictogramBleedStopSecurity';
-import PictogramBleedSuccess from './svg/PictogramBleedSuccess';
-import PictogramBleedTime from './svg/PictogramBleedTime';
-import PictogramBleedTiming from './svg/PictogramBleedTiming';
-import PictogramBleedWorkInProgress from './svg/PictogramBleedWorkInProgress';
 import PictogramCameraDenied from './svg/PictogramCameraDenied';
 import PictogramCameraRequest from './svg/PictogramCameraRequest';
 /* End Bleed Pictograms */
@@ -114,7 +70,6 @@ import PictogramUmbrella from './svg/PictogramUmbrella';
 import PictogramUpdateOS from './svg/PictogramUpdateOS';
 import PictogramWalletDoc from './svg/PictogramWalletDoc';
 import PictogramWorkInProgress from './svg/PictogramWorkInProgress';
-import { SVGPictogramProps } from './types';
 import { Colors, ThemeDark, ThemeLight } from '../../core/Colors';
 
 export const Pictograms = {
@@ -250,142 +205,6 @@ export const Pictogram = ({
 /*
 ░░░ VARIOUS SETS ░░░
 */
-
-/* Bleed pictograms
-    Used in the <Banner /> component
-*/
-
-export type PictogramsBleed = Extract<
-  | 'empty'
-  | 'charity'
-  | 'attention'
-  | 'message'
-  | 'help'
-  | 'feedback'
-  | 'idea'
-  | 'itWallet'
-  | 'security'
-  | 'feature'
-  | 'cie'
-  | 'identity'
-  | 'identityAdd'
-  | 'identityCheck'
-  | 'identityRefresh'
-  | 'cameraRequest'
-  | 'cameraDenied'
-  | 'cardAdd'
-  | 'cardFavourite'
-  | 'cardQuestion'
-  | 'cardIssue'
-  | 'accessDenied'
-  | 'settings'
-  | 'stopSecurity'
-  | 'time'
-  | 'pending'
-  | 'ended'
-  | 'timing'
-  | 'searchLens'
-  | 'passcode'
-  | 'success'
-  | 'fatalError'
-  | 'notification'
-  | 'star'
-  | 'doc'
-  | 'notification'
-  | 'star'
-  | 'qrCode'
-  | 'lostConnection'
-  | 'payments'
-  | 'activate'
-  | 'reactivate'
-  | 'savingMoney'
-  | 'workInProgress',
-  Pictograms
->;
-
-export const PictogramsBleed: {
-  [key in PictogramsBleed]: ({ size }: SVGPictogramProps) => JSX.Element;
-} = {
-  empty: PictogramBleedEmpty,
-  charity: PictogramBleedCharity,
-  help: PictogramBleedHelp,
-  attention: PictogramBleedAttention,
-  message: PictogramBleedMessage,
-  feedback: PictogramBleedFeedback,
-  idea: PictogramBleedIdea,
-  itWallet: PictogramBleedITWallet,
-  security: PictogramBleedSecurity,
-  feature: PictogramBleedFeature,
-  cie: PictogramBleedCie,
-  identity: PictogramBleedIdentity,
-  identityAdd: PictogramBleedIdentityAdd,
-  identityCheck: PictogramBleedIdentityCheck,
-  identityRefresh: PictogramBleedIdentityRefresh,
-  cameraRequest: PictogramBleedCameraRequest,
-  cameraDenied: PictogramBleedCameraDenied,
-  cardAdd: PictogramBleedCardAdd,
-  cardFavourite: PictogramBleedCardFavourite,
-  cardQuestion: PictogramBleedCardQuestion,
-  cardIssue: PictogramBleedCardIssue,
-  accessDenied: PictogramBleedAccessDenied,
-  stopSecurity: PictogramBleedStopSecurity,
-  settings: PictogramBleedSettings,
-  time: PictogramBleedTime,
-  pending: PictogramBleedPending,
-  ended: PictogramBleedEnded,
-  timing: PictogramBleedTiming,
-  searchLens: PictogramBleedSearch,
-  passcode: PictogramBleedPasscode,
-  success: PictogramBleedSuccess,
-  fatalError: PictogramBleedFatalError,
-  notification: PictogramBleedNotification,
-  star: PictogramBleedStar,
-  doc: PictogramBleedDoc,
-  qrCode: PictogramBleedQrCode,
-  lostConnection: PictogramBleedLostConnection,
-  payments: PictogramBleedPayments,
-  activate: PictogramBleedActivate,
-  reactivate: PictogramBleedReactivate,
-  workInProgress: PictogramBleedWorkInProgress,
-  savingMoney: PictogramBleedSavingMoney,
-};
-
-export const PictogramBleed = ({
-  name,
-  size = 80,
-  pictogramStyle = 'default',
-  allowFontScaling = false,
-  ...props
-}: PictogramsProps) => {
-  const theme = useTheme();
-
-  const PictogramElement = PictogramsBleed[name as PictogramsBleed];
-
-  const pictogramSize = size;
-
-  const themeObj = useMemo(() => {
-    switch (pictogramStyle) {
-      case 'dark-content':
-        return ThemeLight;
-      case 'light-content':
-        return ThemeDark;
-      case 'default':
-        return theme;
-    }
-  }, [pictogramStyle, theme]);
-
-  const colorValues: PictogramPalette = useMemo(
-    () => ({
-      hands: Colors[themeObj['pictogram-hands']],
-      main: Colors[themeObj['pictogram-tint-main']],
-      secondary: Colors[themeObj['pictogram-tint-secondary']],
-      tertiary: Colors[themeObj['pictogram-tint-tertiary']],
-    }),
-    [themeObj]
-  );
-
-  return <PictogramElement {...props} size={pictogramSize} colorValues={colorValues} />;
-};
 
 /* Object Pictograms */
 

@@ -74,7 +74,7 @@ const EmptyListContent = (
     space={12}
     style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 40 }}
   >
-    <Pictogram name="emptyArchive" />
+    <Pictogram name="empty" />
     <H4>No Pokémon found</H4>
   </VStack>
 );
