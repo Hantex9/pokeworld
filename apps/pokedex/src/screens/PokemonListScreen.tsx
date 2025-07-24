@@ -75,7 +75,7 @@ const EmptyListContent = (
     style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 40 }}
   >
     <Pictogram name="empty" />
-    <H4>No Pokémon found</H4>
+    <H4 testID="no-pokemon-label">No Pokémon found</H4>
   </VStack>
 );
 
