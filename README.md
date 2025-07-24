@@ -1,4 +1,5 @@
 <div align="center">
+  <img width="80px" height="auto" alt="pokeworld" src="https://github.com/user-attachments/assets/f7c2d81c-5001-489d-ba9d-b65de8aee293" />
   <h1>Pokémon World Monorepo</h1>
 </div>
 
