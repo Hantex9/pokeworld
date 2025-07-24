@@ -6,7 +6,7 @@
 
 | Light Mode                                        | Dark Mode                                        |
 | ------------------------------------------------- | ------------------------------------------------ |
-| <video src="./docs/previews/preview-light.mov" /> | <video src="./docs/previews/preview-dark.mov" /> |
+| <video src="https://github.com/user-attachments/assets/4fda0b25-f22f-49f1-b4d8-14c43b59feb4" /> | <video src="https://github.com/user-attachments/assets/4bb224f5-7365-472a-855e-a1ea60ed19ee" /> |
 
 ## About this Monorepo
 
